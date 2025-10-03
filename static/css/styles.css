@@ -1,0 +1,7 @@
+/* Espaciado suave para el cuerpo */
+body { scroll-behavior: smooth; }
+
+/* Ocupa mejor la altura en pantallas pequeñas */
+@media (max-width: 768px) {
+  .h-\[72vh\] { height: 68vh; }
+}

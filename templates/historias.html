@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Historias | Antioquia Dialoga{% endblock %}
+{% block content %}
+<h2 class="text-2xl font-semibold mb-4">Historias Interactivas</h2>
+<p class="text-slate-600 mb-6">Aprende sobre paz y convivencia a través de historias ilustradas ✨</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Historia 1 -->
+  <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop" class="w-full h-44 object-cover" alt="Los Amigos del Parque">
+    <div class="p-4">
+      <h3 class="font-semibold">Los Amigos del Parque</h3>
+      <p class="text-sm text-slate-600">Historia sobre diversidad y amistad en Antioquia.</p>
+      <button onclick="openStory('parque')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">Leer</button>
+    </div>
+  </article>
+
+  <!-- Historia 2 -->
+  <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1600880292089-90e6a0b9f2b6?q=80&w=1200&auto=format&fit=crop" class="w-full h-44 object-cover" alt="El Puente de Reconciliación">
+    <div class="p-4">
+      <h3 class="font-semibold">El Puente de Reconciliación</h3>
+      <p class="text-sm text-slate-600">Dos comunidades superan sus diferencias construyendo juntas.</p>
+      <button onclick="openStory('puente')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">Leer</button>
+    </div>
+  </article>
+
+  <!-- Historia 3 -->
+  <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop" class="w-full h-44 object-cover" alt="Semillas de Esperanza">
+    <div class="p-4">
+      <h3 class="font-semibold">Semillas de Esperanza</h3>
+      <p class="text-sm text-slate-600">Niños de una vereda plantan un futuro en paz con un huerto.</p>
+      <button onclick="openStory('semillas')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">Leer</button>
+    </div>
+  </article>
+</div>
+
+<!-- Modal -->
+<div id="storyModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl max-w-lg w-full p-6 relative">
+    <button onclick="closeStory()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-700">✖</button>
+    <h3 id="storyTitle" class="text-xl font-semibold mb-3"></h3>
+    <p id="storyContent" class="text-slate-700 leading-relaxed"></p>
+  </div>
+</div>
+
+<script>
+  const stories = {
+    parque: {
+      title: "Los Amigos del Parque",
+      content: "En un barrio de Medellín, un grupo diverso de niños se encuentra cada tarde en el parque. Al principio había discusiones por sus diferencias, pero poco a poco descubren que el respeto y la amistad les permiten disfrutar juntos. Esta historia enseña que la diversidad es riqueza y que el diálogo construye comunidad."
+    },
+    puente: {
+      title: "El Puente de Reconciliación",
+      content: "En dos pueblos divididos por un río y años de conflicto, la comunidad decidió construir un puente entre ambas orillas. Al trabajar unidos, comprendieron que la reconciliación se logra con esfuerzo colectivo y confianza mutua. Esta historia invita a superar resentimientos y abrir caminos hacia la paz."
+    },
+    semillas: {
+      title: "Semillas de Esperanza",
+      content: "Un grupo de niños de una vereda en Antioquia inicia un proyecto de huerto escolar. Mientras plantan semillas, aprenden sobre cuidado mutuo, paciencia y colaboración. La cosecha se convierte en símbolo de esperanza y compromiso con un futuro pacífico."
+    }
+  };
+
+  function openStory(key) {
+    const story = stories[key];
+    document.getElementById("storyTitle").innerText = story.title;
+    document.getElementById("storyContent").innerText = story.content;
+    document.getElementById("storyModal").classList.remove("hidden");
+  }
+
+  function closeStory() {
+    document.getElementById("storyModal").classList.add("hidden");
+  }
+</script>
+{% endblock %}

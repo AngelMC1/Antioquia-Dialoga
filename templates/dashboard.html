@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% block title %}Desafíos | Antioquia Dialoga{% endblock %}
+{% block content %}
+
+<!-- Encabezado -->
+<div class="mb-5">
+  <h2 class="text-2xl font-semibold">Desafíos y Progreso</h2>
+  <p class="text-slate-600">Gana puntos participando en actividades de paz. Completa tus metas diarias para subir de nivel. 🌿</p>
+</div>
+
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+  <div class="bg-white rounded-2xl p-4 shadow-sm">
+    <p class="text-sm text-slate-500">Nivel</p>
+    <div class="mt-2 flex items-end gap-2">
+      <p class="text-3xl font-semibold">3</p>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">+1 esta semana</span>
+    </div>
+    <div class="mt-3 h-2 w-full bg-slate-100 rounded">
+      <div class="h-2 bg-emerald-500 rounded" style="width: 62%;"></div>
+    </div>
+    <p class="mt-1 text-xs text-slate-500">62% al nivel 4</p>
+  </div>
+
+  <div class="bg-white rounded-2xl p-4 shadow-sm">
+    <p class="text-sm text-slate-500">Puntos</p>
+    <div class="mt-2 flex items-end gap-2">
+      <p class="text-3xl font-semibold">750</p>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">+120 hoy</span>
+    </div>
+    <p class="mt-2 text-xs text-slate-500">Meta diaria: 300</p>
+    <div class="mt-1 h-2 w-full bg-slate-100 rounded">
+      <div class="h-2 bg-emerald-500 rounded" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl p-4 shadow-sm">
+    <p class="text-sm text-slate-500">Racha</p>
+    <p class="mt-2 text-3xl font-semibold">5<span class="text-base font-normal"> días</span></p>
+    <p class="mt-2 text-xs text-slate-500">Mantén la racha participando cada día</p>
+  </div>
+
+  <div class="bg-white rounded-2xl p-4 shadow-sm">
+    <p class="text-sm text-slate-500">Trivias completadas</p>
+    <p class="mt-2 text-3xl font-semibold">12</p>
+    <a href="#" class="mt-2 inline-block text-emerald-700 text-sm font-medium hover:underline">Ver historial</a>
+  </div>
+</div>
+
+<!-- Acciones rápidas -->
+<div class="grid md:grid-cols-3 gap-4 mb-6">
+  <a href="{% url 'chat' %}" class="group bg-white rounded-2xl p-5 shadow-sm border hover:border-emerald-200 hover:shadow-md transition">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-xl bg-emerald-100 grid place-items-center">💬</div>
+      <div>
+        <p class="font-semibold">Hablar con PazBot</p>
+        <p class="text-sm text-slate-600">Comparte una situación y recibe guía</p>
+      </div>
+    </div>
+    <div class="mt-3 inline-flex items-center gap-1 text-emerald-700 text-sm font-medium group-hover:underline">
+      Ir al chat →
+    </div>
+  </a>
+
+  <a href="{% url 'historias' %}" class="group bg-white rounded-2xl p-5 shadow-sm border hover:border-emerald-200 hover:shadow-md transition">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-xl bg-emerald-100 grid place-items-center">📚</div>
+      <div>
+        <p class="font-semibold">Leer una historia</p>
+        <p class="text-sm text-slate-600">Aprende con storytelling interactivo</p>
+      </div>
+    </div>
+    <div class="mt-3 inline-flex items-center gap-1 text-emerald-700 text-sm font-medium group-hover:underline">
+      Explorar historias →
+    </div>
+  </a>
+
+  <a href="#" class="group bg-white rounded-2xl p-5 shadow-sm border hover:border-emerald-200 hover:shadow-md transition">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-xl bg-emerald-100 grid place-items-center">🧠</div>
+      <div>
+        <p class="font-semibold">Empezar Trivia</p>
+        <p class="text-sm text-slate-600">Pon a prueba tus conocimientos</p>
+      </div>
+    </div>
+    <div class="mt-3 inline-flex items-center gap-1 text-emerald-700 text-sm font-medium group-hover:underline">
+      Comenzar →
+    </div>
+  </a>
+</div>
+
+<!-- Desafíos diarios -->
+<div class="grid lg:grid-cols-3 gap-4 mb-6">
+  <!-- Card 1 -->
+  <div class="bg-white rounded-2xl p-5 shadow-sm border">
+    <div class="flex items-start justify-between">
+      <div>
+        <p class="font-semibold">Comunicación Positiva</p>
+        <p class="text-sm text-slate-600">Envía 3 mensajes constructivos</p>
+      </div>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">+80 pts</span>
+    </div>
+    <div class="mt-4 h-2 rounded bg-slate-100">
+      <div class="h-2 rounded bg-emerald-500" style="width: 33%;"></div>
+    </div>
+    <div class="mt-1 text-xs text-slate-500">Progreso 1/3</div>
+    <div class="mt-4 flex gap-2">
+      <a href="{% url 'chat' %}" class="px-3 py-1.5 text-sm rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">Ir al chat</a>
+      <button class="px-3 py-1.5 text-sm rounded-lg border hover:bg-slate-50">Ver guía</button>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="bg-white rounded-2xl p-5 shadow-sm border">
+    <div class="flex items-start justify-between">
+      <div>
+        <p class="font-semibold">Aprendizaje Continuo</p>
+        <p class="text-sm text-slate-600">Completa 2 trivias</p>
+      </div>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">+120 pts</span>
+    </div>
+    <div class="mt-4 h-2 rounded bg-slate-100">
+      <div class="h-2 rounded bg-emerald-500" style="width: 0%;"></div>
+    </div>
+    <div class="mt-1 text-xs text-slate-500">Progreso 0/2</div>
+    <div class="mt-4 flex gap-2">
+      <a href="#" class="px-3 py-1.5 text-sm rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">Empezar trivia</a>
+      <button class="px-3 py-1.5 text-sm rounded-lg border hover:bg-slate-50">Temario</button>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="bg-white rounded-2xl p-5 shadow-sm border">
+    <div class="flex items-start justify-between">
+      <div>
+        <p class="font-semibold">Storytelling</p>
+        <p class="text-sm text-slate-600">Lee 1 historia completa</p>
+      </div>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">+60 pts</span>
+    </div>
+    <div class="mt-4 h-2 rounded bg-slate-100">
+      <div class="h-2 rounded bg-emerald-500" style="width: 100%;"></div>
+    </div>
+    <div class="mt-1 text-xs text-slate-500">Progreso 1/1 · ¡Completado!</div>
+    <div class="mt-4 flex gap-2">
+      <a href="{% url 'historias' %}" class="px-3 py-1.5 text-sm rounded-lg border hover:bg-slate-50">Leer otra</a>
+      <button class="px-3 py-1.5 text-sm rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">Reclamar puntos</button>
+    </div>
+  </div>
+</div>
+
+<!-- Logros & Ranking -->
+<div class="grid lg:grid-cols-3 gap-4">
+  <!-- Logros -->
+  <div class="bg-white rounded-2xl p-5 shadow-sm border lg:col-span-2">
+    <div class="flex items-center justify-between mb-3">
+      <h3 class="font-semibold">Logros recientes</h3>
+      <a href="#" class="text-sm text-emerald-700 font-medium hover:underline">Ver todos</a>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm">🌟 Primer Conversador</span>
+      <span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm">🧭 Mediador en práctica</span>
+      <span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm">📖 Narrador de Paz</span>
+      <span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm">🔥 Racha x5</span>
+    </div>
+  </div>
+
+  <!-- Leaderboard -->
+  <div class="bg-white rounded-2xl p-5 shadow-sm border">
+    <h3 class="font-semibold mb-3">Ranking semanal</h3>
+    <ol class="space-y-2">
+      <li class="flex items-center justify-between">
+        <span>1. Ana</span><span class="text-slate-600">1,240 pts</span>
+      </li>
+      <li class="flex items-center justify-between">
+        <span>2. José</span><span class="text-slate-600">1,050 pts</span>
+      </li>
+      <li class="flex items-center justify-between">
+        <span>3. Migue</span><span class="text-slate-600">980 pts</span>
+      </li>
+    </ol>
+    <a href="#" class="mt-3 inline-block text-emerald-700 text-sm font-medium hover:underline">Ver ranking completo</a>
+  </div>
+</div>
+
+{% endblock %}
