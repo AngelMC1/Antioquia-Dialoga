@@ -5,6 +5,8 @@
   const input = document.getElementById('chatInput');
   const micBtn = document.getElementById('micBtn');
   const voiceStatus = document.getElementById('voiceStatus');
+  const newChatBtn = document.getElementById('newChatBtn');
+  const sessionIdInput = document.getElementById('sessionId');
 
   if (!win || !form || !input) return;
 
@@ -28,31 +30,35 @@
     return t;
   }
 
-  function generateReply(msg) {
-    const m = msg.toLowerCase();
+  async function sendMessage(message) {
+    const sessionId = sessionIdInput.value;
+    
+    try {
+      const response = await fetch('/chat/message/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: message,
+          session_id: sessionId
+        })
+      });
 
-    if (m.includes('reconcili')) {
-      return 'La reconciliación en Antioquia se fortalece con diálogo, memoria y proyectos comunitarios. ¿Quieres ideas para aplicarla en tu colegio/barrio?';
+      const data = await response.json();
+      
+      if (data.success) {
+        return data.response;
+      } else {
+        throw new Error(data.error || 'Error desconocido');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      return 'Lo siento, hubo un error al procesar tu mensaje. Por favor, intenta nuevamente. 🌿';
     }
-    if (m.includes('víctima') || m.includes('victima')) {
-      return 'El enfoque con víctimas prioriza verdad, reparación y no repetición. Puedo sugerirte actividades pedagógicas de memoria y empatía.';
-    }
-    if (m.includes('juventud') || m.includes('joven')) {
-      return 'La participación juvenil es clave: veedurías escolares, mediación de conflictos y proyectos culturales. Te puedo dar un plan en 5 pasos.';
-    }
-    if (m.includes('territorio') || m.includes('comuna') || m.includes('vereda')) {
-      return 'Los “territorios de paz” se construyen con acuerdos básicos de convivencia, mapeo de conflictos y acciones colectivas. ¿Te propongo un canvas rápido?';
-    }
-    if (m.includes('comunicación') || m.includes('no violenta') || m.includes('cnv')) {
-      return 'Tip CNV: observa sin juzgar, expresa sentimientos, identifica necesidades y haz peticiones claras. ¿Practicamos con un ejemplo?';
-    }
-    if (m.includes('antioquia')) {
-      return 'En Antioquia hay experiencias valiosas de paz comunitaria y escolar. ¿Te resumo 3 prácticas replicables para tu contexto?';
-    }
-    return 'Gracias por tu mensaje 💚. Mientras conectamos el modelo, te puedo guiar con buenas prácticas de diálogo, mediación y participación ciudadana. ¿Qué situación concreta quieres abordar?';
   }
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const text = (input.value || '').trim();
     if (!text) return;
@@ -61,11 +67,9 @@
     input.value = '';
 
     const typing = addTyping();
-    setTimeout(() => {
-      typing.remove();
-      const reply = generateReply(text);
-      addMessage(reply, 'bot');
-    }, 900 + Math.random() * 600);
+    const reply = await sendMessage(text);
+    typing.remove();
+    addMessage(reply, 'bot');
   });
 
   document.querySelectorAll('.tema-btn').forEach((btn) => {
@@ -75,6 +79,23 @@
     });
   });
 
+  // Nueva conversación
+  if (newChatBtn) {
+    newChatBtn.addEventListener('click', async () => {
+      try {
+        const response = await fetch('/chat/new/', { method: 'POST' });
+        const data = await response.json();
+        
+        if (data.success) {
+          window.location.reload();
+        }
+      } catch (error) {
+        console.error('Error al crear nueva conversación:', error);
+      }
+    });
+  }
+
+  // Reconocimiento de voz
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   let recognition = null;
   let listening = false;

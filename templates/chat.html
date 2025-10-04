@@ -7,17 +7,28 @@
   <section class="bg-white rounded-2xl shadow-sm p-4 flex flex-col h-[72vh]">
     <div class="flex items-center gap-2 pb-3 border-b">
       <h2 class="font-semibold">PazBot – Asistente de Paz Antioquia</h2>
-      <span id="voiceStatus" class="ml-auto text-xs px-2 py-1 rounded bg-emerald-100 text-emerald-700 hidden">
+      <button id="newChatBtn" class="ml-auto text-xs px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200">
+        Nueva conversación
+      </button>
+      <span id="voiceStatus" class="text-xs px-2 py-1 rounded bg-emerald-100 text-emerald-700 hidden">
         Escuchando…
       </span>
     </div>
 
     <!-- Ventana de chat -->
     <div id="chatWindow" class="flex-1 overflow-y-auto py-4 space-y-3">
-      <div class="max-w-[85%] bg-slate-100 rounded-2xl px-3 py-2">
-        <p><strong>PazBot:</strong> ¡Hola! Soy tu asistente de paz en Antioquia 🌿. ¿Sobre qué te gustaría conversar hoy?</p>
-        <p class="text-xs text-slate-500 mt-1">Consejo: puedes usar el micrófono 🎤</p>
-      </div>
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="max-w-[85%] {% if msg.role == 'user' %}bg-emerald-600 text-white ml-auto{% else %}bg-slate-100{% endif %} rounded-2xl px-3 py-2">
+            {{ msg.content }}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="max-w-[85%] bg-slate-100 rounded-2xl px-3 py-2">
+          <p><strong>PazBot:</strong> ¡Hola! Soy tu asistente de paz en Antioquia 🌿. ¿Sobre qué te gustaría conversar hoy?</p>
+          <p class="text-xs text-slate-500 mt-1">Consejo: puedes usar el micrófono 🎤</p>
+        </div>
+      {% endif %}
     </div>
 
     <!-- Sugerencias rápidas -->
@@ -32,8 +43,9 @@
 
       <!-- Formulario -->
       <form id="chatForm" class="flex gap-2">
+        <input type="hidden" id="sessionId" value="{{ session_id }}">
         <input id="chatInput" class="flex-1 border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Escribe tu mensaje o usa el micrófono…" />
-        <button id="micBtn" type="button" class="px-3 py-2 border rounded-xl" title="Hablar con tu voz">🎤</button>
+        <button id="micBtn" type="button" class="px-3 py-2 border rounded-xl hover:bg-slate-100" title="Hablar con tu voz">🎤</button>
         <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">Enviar</button>
       </form>
     </div>
@@ -44,8 +56,9 @@
     <h3 class="font-semibold mb-2">Tips de uso</h3>
     <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
       <li>Haz clic en el micrófono y habla con voz clara (es-CO).</li>
-      <li>Prueba con temas: “reconciliación”, “víctimas”, “convivencia escolar”.</li>
-      <li>Luego conectaremos este front a un backend de IA.</li>
+      <li>Prueba con temas: "reconciliación", "víctimas", "convivencia escolar".</li>
+      <li>El chatbot recuerda el contexto de tu conversación.</li>
+      <li>Usa "Nueva conversación" para empezar de cero.</li>
     </ul>
   </aside>
 </div>
