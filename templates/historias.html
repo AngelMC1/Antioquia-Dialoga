@@ -2,74 +2,226 @@
 {% block title %}Historias | Antioquia Dialoga{% endblock %}
 {% block content %}
 <h2 class="text-2xl font-semibold mb-4">Historias Interactivas</h2>
-<p class="text-slate-600 mb-6">Aprende sobre paz y convivencia a través de historias ilustradas ✨</p>
+<p class="text-slate-600 mb-6">Aprende sobre paz y convivencia a través de historias ilustradas ✨ (+30 puntos por historia)</p>
+
+{% if profile %}
+<div class="mb-4 bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+  <p class="text-sm text-emerald-700">📚 Historias leídas: <span class="font-semibold">{{ profile.stories_read }}</span>/3</p>
+</div>
+{% endif %}
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
   <!-- Historia 1 -->
-  <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+  <article class="bg-white rounded-2xl shadow-sm overflow-hidden" data-story-id="parque">
     <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop" class="w-full h-44 object-cover" alt="Los Amigos del Parque">
     <div class="p-4">
       <h3 class="font-semibold">Los Amigos del Parque</h3>
       <p class="text-sm text-slate-600">Historia sobre diversidad y amistad en Antioquia.</p>
-      <button onclick="openStory('parque')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">Leer</button>
+      
+      {% if 'parque' in stories_read_ids %}
+        <div class="mt-3 flex items-center gap-2">
+          <button onclick="openStory('parque')" class="flex-1 px-4 py-2 bg-slate-100 text-slate-600 rounded-xl hover:bg-slate-200">
+            Ver de nuevo
+          </button>
+          <span class="px-3 py-2 bg-emerald-100 text-emerald-700 rounded-xl text-sm font-medium">✓ Leída</span>
+        </div>
+      {% else %}
+        <button onclick="openStory('parque')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">
+          Leer historia
+        </button>
+      {% endif %}
     </div>
   </article>
 
   <!-- Historia 2 -->
-  <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+  <article class="bg-white rounded-2xl shadow-sm overflow-hidden" data-story-id="puente">
     <img src="https://images.unsplash.com/photo-1600880292089-90e6a0b9f2b6?q=80&w=1200&auto=format&fit=crop" class="w-full h-44 object-cover" alt="El Puente de Reconciliación">
     <div class="p-4">
       <h3 class="font-semibold">El Puente de Reconciliación</h3>
       <p class="text-sm text-slate-600">Dos comunidades superan sus diferencias construyendo juntas.</p>
-      <button onclick="openStory('puente')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">Leer</button>
+      
+      {% if 'puente' in stories_read_ids %}
+        <div class="mt-3 flex items-center gap-2">
+          <button onclick="openStory('puente')" class="flex-1 px-4 py-2 bg-slate-100 text-slate-600 rounded-xl hover:bg-slate-200">
+            Ver de nuevo
+          </button>
+          <span class="px-3 py-2 bg-emerald-100 text-emerald-700 rounded-xl text-sm font-medium">✓ Leída</span>
+        </div>
+      {% else %}
+        <button onclick="openStory('puente')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">
+          Leer historia
+        </button>
+      {% endif %}
     </div>
   </article>
 
   <!-- Historia 3 -->
-  <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+  <article class="bg-white rounded-2xl shadow-sm overflow-hidden" data-story-id="semillas">
     <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop" class="w-full h-44 object-cover" alt="Semillas de Esperanza">
     <div class="p-4">
       <h3 class="font-semibold">Semillas de Esperanza</h3>
       <p class="text-sm text-slate-600">Niños de una vereda plantan un futuro en paz con un huerto.</p>
-      <button onclick="openStory('semillas')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">Leer</button>
+      
+      {% if 'semillas' in stories_read_ids %}
+        <div class="mt-3 flex items-center gap-2">
+          <button onclick="openStory('semillas')" class="flex-1 px-4 py-2 bg-slate-100 text-slate-600 rounded-xl hover:bg-slate-200">
+            Ver de nuevo
+          </button>
+          <span class="px-3 py-2 bg-emerald-100 text-emerald-700 rounded-xl text-sm font-medium">✓ Leída</span>
+        </div>
+      {% else %}
+        <button onclick="openStory('semillas')" class="mt-3 w-full px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700">
+          Leer historia
+        </button>
+      {% endif %}
     </div>
   </article>
 </div>
 
 <!-- Modal -->
-<div id="storyModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-  <div class="bg-white rounded-2xl max-w-lg w-full p-6 relative">
-    <button onclick="closeStory()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-700">✖</button>
-    <h3 id="storyTitle" class="text-xl font-semibold mb-3"></h3>
-    <p id="storyContent" class="text-slate-700 leading-relaxed"></p>
+<div id="storyModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-2xl max-w-2xl w-full p-6 relative max-h-[80vh] overflow-y-auto">
+    <button onclick="closeStory()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-700 text-2xl">✖</button>
+    <h3 id="storyTitle" class="text-2xl font-semibold mb-4"></h3>
+    <p id="storyContent" class="text-slate-700 leading-relaxed text-lg mb-6"></p>
+    
+    <!-- Botón para marcar como leída -->
+    <div id="markReadSection" class="border-t pt-4">
+      <button 
+        id="markReadBtn" 
+        onclick="markStoryAsRead()" 
+        class="w-full px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 font-medium transition"
+      >
+        Marcar como leída (+30 puntos) 🌿
+      </button>
+      <p class="text-xs text-slate-500 text-center mt-2">Solo puedes reclamar puntos una vez por historia</p>
+    </div>
+    
+    <!-- Mensaje de historia ya leída -->
+    <div id="alreadyReadSection" class="hidden border-t pt-4">
+      <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 text-center">
+        <p class="text-emerald-700 font-medium">✓ Ya completaste esta historia</p>
+        <p class="text-sm text-slate-600 mt-1">Gracias por tu compromiso con la paz 🌿</p>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
   const stories = {
     parque: {
-      title: "Los Amigos del Parque",
-      content: "En un barrio de Medellín, un grupo diverso de niños se encuentra cada tarde en el parque. Al principio había discusiones por sus diferencias, pero poco a poco descubren que el respeto y la amistad les permiten disfrutar juntos. Esta historia enseña que la diversidad es riqueza y que el diálogo construye comunidad."
+      title: "Los Amigos del Parque 🌳",
+      content: "En un barrio de Medellín, un grupo diverso de niños se encuentra cada tarde en el parque. Al principio había discusiones por sus diferencias, pero poco a poco descubren que el respeto y la amistad les permiten disfruir juntos.\n\nMaría, una niña afrocolombiana, compartió su música favorita. Juan, de familia campesina, les enseñó juegos tradicionales. Y Sofía, recién llegada de la costa, les contó historias del mar.\n\nEsta historia enseña que la diversidad es riqueza y que el diálogo construye comunidad. Cuando nos abrimos a conocer al otro, descubrimos que tenemos más en común de lo que pensábamos."
     },
     puente: {
-      title: "El Puente de Reconciliación",
-      content: "En dos pueblos divididos por un río y años de conflicto, la comunidad decidió construir un puente entre ambas orillas. Al trabajar unidos, comprendieron que la reconciliación se logra con esfuerzo colectivo y confianza mutua. Esta historia invita a superar resentimientos y abrir caminos hacia la paz."
+      title: "El Puente de Reconciliación 🌉",
+      content: "En dos pueblos de Antioquia divididos por un río y años de conflicto, las comunidades vivían dándose la espalda. Cada lado culpaba al otro de sus problemas. Los niños crecían sin conocerse, perpetuando viejos resentimientos.\n\nUn día, una creciente del río destruyó el único puente que quedaba. Sin embargo, en lugar de seguir separados, ambas comunidades decidieron construir juntos un nuevo puente, más fuerte y hermoso.\n\nDurante la construcción, trabajaron hombro a hombro. Compartieron alimentos, historias y risas. Se dieron cuenta de que habían sido vecinos enemistados por malentendidos que ya nadie recordaba por qué empezaron.\n\nEsta historia invita a superar resentimientos y abrir caminos hacia la paz. La reconciliación se logra con esfuerzo colectivo, confianza mutua y la decisión de construir juntos un mejor futuro."
     },
     semillas: {
-      title: "Semillas de Esperanza",
-      content: "Un grupo de niños de una vereda en Antioquia inicia un proyecto de huerto escolar. Mientras plantan semillas, aprenden sobre cuidado mutuo, paciencia y colaboración. La cosecha se convierte en símbolo de esperanza y compromiso con un futuro pacífico."
+      title: "Semillas de Esperanza 🌱",
+      content: "En una vereda de Antioquia que había sufrido años de violencia, un grupo de niños de la escuela decidió iniciar un proyecto especial: un huerto escolar.\n\nAl principio, la tierra parecía tan dura como el corazón de algunos adultos que aún guardaban rencor. Pero los niños no se rindieron. Con paciencia, aflojaron la tierra, plantaron semillas y las cuidaron con dedicación.\n\nMientras esperaban la cosecha, los niños aprendieron lecciones valiosas: el cuidado mutuo, la paciencia, la colaboración y la importancia de nutrir lo bueno para que crezca. Adultos que antes no se hablaban, comenzaron a reunirse para ayudar a los niños.\n\nCuando llegó la cosecha, toda la comunidad celebró junta. El huerto se había convertido en un símbolo de esperanza y compromiso con un futuro pacífico. Las semillas plantadas no solo dieron frutos, sino que sembraron paz en los corazones."
     }
   };
 
-  function openStory(key) {
-    const story = stories[key];
+  let currentStoryId = null;
+  const storiesRead = {{ stories_read_ids|safe }};
+
+  function openStory(storyId) {
+    const story = stories[storyId];
+    currentStoryId = storyId;
+    
     document.getElementById("storyTitle").innerText = story.title;
     document.getElementById("storyContent").innerText = story.content;
+    
+    // Mostrar u ocultar botón según si ya fue leída
+    const markReadSection = document.getElementById("markReadSection");
+    const alreadyReadSection = document.getElementById("alreadyReadSection");
+    
+    if (storiesRead.includes(storyId)) {
+      markReadSection.classList.add('hidden');
+      alreadyReadSection.classList.remove('hidden');
+    } else {
+      markReadSection.classList.remove('hidden');
+      alreadyReadSection.classList.add('hidden');
+    }
+    
     document.getElementById("storyModal").classList.remove("hidden");
   }
 
   function closeStory() {
     document.getElementById("storyModal").classList.add("hidden");
+    currentStoryId = null;
   }
+
+  async function markStoryAsRead() {
+    if (!currentStoryId) return;
+    
+    const btn = document.getElementById("markReadBtn");
+    btn.disabled = true;
+    btn.textContent = "Procesando...";
+    
+    try {
+      const response = await fetch('/historias/read/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          story_id: currentStoryId
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        // Mostrar notificación de puntos
+        showPointsNotification(data.points_earned, data.message);
+        
+        // Actualizar UI
+        document.getElementById("markReadSection").classList.add('hidden');
+        document.getElementById("alreadyReadSection").classList.remove('hidden');
+        
+        // Agregar a la lista de leídas
+        storiesRead.push(currentStoryId);
+        
+        // Recargar página después de 2 segundos para actualizar el contador
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      } else {
+        alert(data.message || 'No se pudieron otorgar los puntos');
+        btn.disabled = false;
+        btn.textContent = "Marcar como leída (+30 puntos) 🌿";
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al procesar la historia');
+      btn.disabled = false;
+      btn.textContent = "Marcar como leída (+30 puntos) 🌿";
+    }
+  }
+
+  function showPointsNotification(points, message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-20 right-4 bg-emerald-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce';
+    notification.innerHTML = `
+      <p class="font-semibold">${message}</p>
+      <p class="text-sm">+${points} puntos 🌿</p>
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.transition = 'opacity 0.5s';
+      notification.style.opacity = '0';
+      setTimeout(() => notification.remove(), 500);
+    }, 2500);
+  }
+  
+  // Cerrar modal con ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeStory();
+    }
+  });
 </script>
 {% endblock %}

@@ -16,9 +16,10 @@
         <h1 class="text-xl font-semibold">Antioquia Dialoga</h1>
       </div>
       <nav class="flex items-center gap-2">
-        <a href="{% url 'chat' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/chat/' %}bg-emerald-100{% endif %}">Chat Ciudadano</a>
+        <a href="{% url 'chat' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/chat/' %}bg-emerald-100{% endif %}">Chat</a>
         <a href="{% url 'historias' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/historias/' %}bg-emerald-100{% endif %}">Historias</a>
-        <a href="{% url 'desafios' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/' %}bg-emerald-100{% endif %}">Desafíos</a>
+        <a href="{% url 'trivias' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if '/trivias' in request.path %}bg-emerald-100{% endif %}">Trivias</a>
+        <a href="{% url 'desafios' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/' %}bg-emerald-100{% endif %}">Dashboard</a>
       </nav>
     </div>
   </header>

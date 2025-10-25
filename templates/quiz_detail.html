@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% block title %}{{ quiz.title }} | Trivias{% endblock %}
+{% block content %}
+
+<div class="max-w-4xl mx-auto">
+  <!-- Header de la trivia -->
+  <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+    <div class="flex items-start justify-between mb-4">
+      <div class="flex-1">
+        <h2 class="text-2xl font-semibold mb-2">{{ quiz.title }}</h2>
+        <p class="text-slate-600">{{ quiz.description }}</p>
+      </div>
+      <span class="ml-4 px-3 py-1 rounded-full text-sm font-medium
+        {% if quiz.difficulty == 'easy' %}bg-green-100 text-green-700
+        {% elif quiz.difficulty == 'medium' %}bg-yellow-100 text-yellow-700
+        {% else %}bg-red-100 text-red-700{% endif %}">
+        {{ quiz.get_difficulty_display }}
+      </span>
+    </div>
+    
+    <div class="grid grid-cols-3 gap-4 pt-4 border-t">
+      <div class="text-center">
+        <p class="text-sm text-slate-500">Preguntas</p>
+        <p class="text-xl font-semibold text-emerald-600">{{ questions|length }}</p>
+      </div>
+      <div class="text-center">
+        <p class="text-sm text-slate-500">Recompensa</p>
+        <p class="text-xl font-semibold text-emerald-600">{{ quiz.points_reward }} pts</p>
+      </div>
+      <div class="text-center">
+        <p class="text-sm text-slate-500">Categoría</p>
+        <p class="text-sm font-semibold text-slate-700">{{ quiz.category }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario de la trivia -->
+  <form id="quizForm" class="space-y-6">
+    {% for question in questions %}
+    <div class="bg-white rounded-2xl shadow-sm p-6 question-card" data-question-id="{{ question.id }}">
+      <div class="flex items-start gap-3 mb-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-semibold flex items-center justify-center">
+          {{ forloop.counter }}
+        </span>
+        <p class="text-lg font-medium text-slate-800">{{ question.question_text }}</p>
+      </div>
+      
+      <div class="space-y-3 ml-11">
+        <label class="flex items-start gap-3 p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-300 cursor-pointer transition option-label">
+          <input type="radio" name="question_{{ question.id }}" value="A" class="mt-1" required>
+          <span class="flex-1"><span class="font-medium">A.</span> {{ question.option_a }}</span>
+        </label>
+        
+        <label class="flex items-start gap-3 p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-300 cursor-pointer transition option-label">
+          <input type="radio" name="question_{{ question.id }}" value="B" class="mt-1" required>
+          <span class="flex-1"><span class="font-medium">B.</span> {{ question.option_b }}</span>
+        </label>
+        
+        <label class="flex items-start gap-3 p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-300 cursor-pointer transition option-label">
+          <input type="radio" name="question_{{ question.id }}" value="C" class="mt-1" required>
+          <span class="flex-1"><span class="font-medium">C.</span> {{ question.option_c }}</span>
+        </label>
+        
+        <label class="flex items-start gap-3 p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-300 cursor-pointer transition option-label">
+          <input type="radio" name="question_{{ question.id }}" value="D" class="mt-1" required>
+          <span class="flex-1"><span class="font-medium">D.</span> {{ question.option_d }}</span>
+        </label>
+      </div>
+    </div>
+    {% endfor %}
+    
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+      <button type="submit" id="submitBtn" class="w-full px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 font-semibold text-lg transition">
+        Enviar respuestas y ver resultados 🎯
+      </button>
+      <p class="text-center text-sm text-slate-500 mt-2">Asegúrate de responder todas las preguntas</p>
+    </div>
+  </form>
+
+  <!-- Intentos previos -->
+  {% if previous_attempts %}
+  <div class="mt-8 bg-white rounded-2xl shadow-sm p-6">
+    <h3 class="font-semibold mb-4">📊 Tus intentos anteriores</h3>
+    <div class="space-y-2">
+      {% for attempt in previous_attempts %}
+      <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+        <div>
+          <p class="font-medium">{{ attempt.score }}/{{ attempt.total_questions }} correctas</p>
+          <p class="text-xs text-slate-500">{{ attempt.completed_at|date:"d/m/Y H:i" }}</p>
+        </div>
+        <div class="text-right">
+          <p class="font-semibold text-emerald-600">+{{ attempt.points_earned }} pts</p>
+          <p class="text-xs text-slate-600">{{ attempt.get_percentage }}%</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Modal de resultados -->
+<div id="resultsModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-2xl max-w-3xl w-full p-6 max-h-[90vh] overflow-y-auto">
+    <h3 class="text-2xl font-semibold mb-4" id="resultsTitle">Resultados</h3>
+    
+    <!-- Resumen de puntuación -->
+    <div id="scoreSummary" class="mb-6 p-6 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl">
+      <!-- Se llenará dinámicamente con JavaScript -->
+    </div>
+    
+    <!-- Desglose de respuestas -->
+    <div id="answersBreakdown" class="space-y-4 mb-6">
+      <!-- Se llenará dinámicamente con JavaScript -->
+    </div>
+    
+    <div class="flex gap-3">
+      <a href="{% url 'trivias' %}" class="flex-1 px-6 py-3 bg-slate-100 text-slate-700 rounded-xl hover:bg-slate-200 font-medium text-center transition">
+        Ver más trivias
+      </a>
+      <button onclick="location.reload()" class="flex-1 px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 font-medium transition">
+        Intentar de nuevo
+      </button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const quizId = {{ quiz.id }};
+const startTime = Date.now();
+
+// Highlight de opciones seleccionadas
+document.querySelectorAll('.option-label').forEach(label => {
+  label.addEventListener('click', function() {
+    // Remover highlight de otras opciones del mismo grupo
+    const questionCard = this.closest('.question-card');
+    questionCard.querySelectorAll('.option-label').forEach(l => {
+      l.classList.remove('border-emerald-500', 'bg-emerald-50');
+      l.classList.add('border-slate-200');
+    });
+    
+    // Agregar highlight a la opción seleccionada
+    this.classList.remove('border-slate-200');
+    this.classList.add('border-emerald-500', 'bg-emerald-50');
+  });
+});
+
+// Enviar formulario
+document.getElementById('quizForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Procesando respuestas...';
+  
+  // Recopilar respuestas
+  const formData = new FormData(this);
+  const answers = {};
+  
+  for (const [key, value] of formData.entries()) {
+    const questionId = key.replace('question_', '');
+    answers[questionId] = value;
+  }
+  
+  // Calcular tiempo tomado
+  const timeTaken = Math.floor((Date.now() - startTime) / 1000);
+  
+  try {
+    const response = await fetch('/trivias/submit/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        quiz_id: quizId,
+        answers: answers,
+        time_taken: timeTaken
+      })
+    });
+    
+    const data = await response.json();
+    
+    if (data.success) {
+      showResults(data);
+    } else {
+      alert('Error: ' + (data.error || 'No se pudieron procesar las respuestas'));
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar respuestas y ver resultados 🎯';
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error al procesar la trivia');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar respuestas y ver resultados 🎯';
+  }
+});
+
+function showResults(data) {
+  const modal = document.getElementById('resultsModal');
+  const scoreSummary = document.getElementById('scoreSummary');
+  const answersBreakdown = document.getElementById('answersBreakdown');
+  
+  // Resumen de puntuación
+  let summaryHTML = `
+    <div class="text-center">
+      <p class="text-5xl font-bold text-emerald-700 mb-2">${data.score}/${data.total_questions}</p>
+      <p class="text-xl font-semibold mb-4">${data.percentage.toFixed(0)}% correctas</p>
+      ${data.is_perfect ? '<p class="text-lg font-semibold text-emerald-600 mb-2">¡Trivia perfecta! 🎉</p>' : ''}
+      <div class="inline-block px-6 py-3 bg-white rounded-xl shadow-sm">
+        <p class="text-sm text-slate-600">Puntos ganados</p>
+        <p class="text-3xl font-bold text-emerald-600">+${data.points_earned} 🌿</p>
+      </div>
+    </div>
+  `;
+  scoreSummary.innerHTML = summaryHTML;
+  
+  // Desglose de respuestas
+  let breakdownHTML = '<h4 class="font-semibold text-lg mb-3">Revisión de respuestas:</h4>';
+  
+  data.results.forEach((result, index) => {
+    const isCorrect = result.is_correct;
+    const borderColor = isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50';
+    const icon = isCorrect ? '✓' : '✗';
+    const iconColor = isCorrect ? 'text-green-600' : 'text-red-600';
+    
+    breakdownHTML += `
+      <div class="border-2 ${borderColor} rounded-lg p-4">
+        <div class="flex items-start gap-3 mb-2">
+          <span class="text-2xl ${iconColor}">${icon}</span>
+          <div class="flex-1">
+            <p class="font-medium mb-2">${index + 1}. ${result.question_text}</p>
+            <p class="text-sm">
+              <span class="text-slate-600">Tu respuesta:</span> 
+              <span class="font-semibold ${isCorrect ? 'text-green-600' : 'text-red-600'}">${result.user_answer || 'Sin respuesta'}</span>
+            </p>
+            ${!isCorrect ? `<p class="text-sm"><span class="text-slate-600">Respuesta correcta:</span> <span class="font-semibold text-green-600">${result.correct_answer}</span></p>` : ''}
+            ${result.explanation ? `<p class="text-sm text-slate-600 mt-2 italic">${result.explanation}</p>` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  answersBreakdown.innerHTML = breakdownHTML;
+  
+  // Mostrar modal
+  modal.classList.remove('hidden');
+  
+  // Notificación de puntos
+  showPointsNotification(data.points_earned, `¡${data.percentage.toFixed(0)}% correctas!`);
+}
+
+function showPointsNotification(points, message) {
+  const notification = document.createElement('div');
+  notification.className = 'fixed top-20 right-4 bg-emerald-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce';
+  notification.innerHTML = `
+    <p class="font-semibold">${message}</p>
+    <p class="text-sm">+${points} puntos 🌿</p>
+  `;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.transition = 'opacity 0.5s';
+    notification.style.opacity = '0';
+    setTimeout(() => notification.remove(), 500);
+  }, 3000);
+}
+</script>
+{% endblock %}
+

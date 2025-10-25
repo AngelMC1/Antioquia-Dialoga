@@ -30,6 +30,21 @@
     return t;
   }
 
+  function showPointsNotification(points) {
+    if (points <= 0) return;
+    
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-20 right-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-bounce';
+    notification.innerHTML = `+${points} puntos 🌿`;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.transition = 'opacity 0.5s';
+      notification.style.opacity = '0';
+      setTimeout(() => notification.remove(), 500);
+    }, 2000);
+  }
+
   async function sendMessage(message) {
     const sessionId = sessionIdInput.value;
     
@@ -48,6 +63,10 @@
       const data = await response.json();
       
       if (data.success) {
+        // Mostrar notificación de puntos si se ganaron
+        if (data.points_earned) {
+          showPointsNotification(data.points_earned);
+        }
         return data.response;
       } else {
         throw new Error(data.error || 'Error desconocido');
