@@ -15,7 +15,7 @@ class ConversationAdmin(admin.ModelAdmin):
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('conversation', 'role', 'content_preview', 'timestamp')
-    list_filter = ('role', 'timestamp')
+    list_filter = ('role', 'timestamp') 
     search_fields = ('content',)
     readonly_fields = ('timestamp',)
     

@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='desafios'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('chat/', views.chat, name='chat'),
     path('chat/message/', views.chat_message, name='chat_message'),
     path('chat/new/', views.new_chat, name='new_chat'),
@@ -11,5 +13,5 @@ urlpatterns = [
     path('trivias/', views.trivias, name='trivias'),
     path('trivias/<int:quiz_id>/', views.quiz_detail, name='quiz_detail'),
     path('trivias/submit/', views.submit_quiz, name='submit_quiz'),
-    path('set-username/', views.set_username, name='set_username'),
+    path('set-username/', views.set_username, name='set_username'),  # Deprecated pero mantenido
 ]

@@ -9,17 +9,33 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body class="bg-slate-50 text-slate-800">
-  <header class="border-b bg-white">
+  <header class="border-b bg-white shadow-sm">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">🌿</span>
         <h1 class="text-xl font-semibold">Antioquia Dialoga</h1>
       </div>
+      
       <nav class="flex items-center gap-2">
         <a href="{% url 'chat' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/chat/' %}bg-emerald-100{% endif %}">Chat</a>
         <a href="{% url 'historias' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/historias/' %}bg-emerald-100{% endif %}">Historias</a>
         <a href="{% url 'trivias' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if '/trivias' in request.path %}bg-emerald-100{% endif %}">Trivias</a>
         <a href="{% url 'desafios' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/' %}bg-emerald-100{% endif %}">Dashboard</a>
+        
+        <!-- Usuario y logout -->
+        {% if request.session.username %}
+        <div class="ml-2 pl-2 border-l border-slate-200 flex items-center gap-2">
+          <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-sm font-medium">
+            👤 {{ request.session.username }}
+          </span>
+          <a href="{% url 'logout' %}" 
+             class="px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition text-sm font-medium"
+             title="Cerrar sesión"
+             onclick="return confirm('¿Seguro que quieres cerrar sesión?')">
+            Salir
+          </a>
+        </div>
+        {% endif %}
       </nav>
     </div>
   </header>

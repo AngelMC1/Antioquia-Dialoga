@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
@@ -28,8 +28,8 @@ def dashboard(request):
     profile = get_or_create_profile(request)
     
     if not profile:
-        # Mostrar modal para pedir username
-        return render(request, 'dashboard.html', {'needs_username': True})
+        # Redirigir al login si no hay sesión
+        return redirect('login')
     
     # Calcular progreso al siguiente nivel
     points_for_next = ((profile.level) * 200) - profile.total_points
@@ -441,3 +441,71 @@ def submit_quiz(request):
             'error': 'Error procesando la trivia',
             'details': str(e)
         }, status=500)
+
+
+def login_view(request):
+    """Vista de login - permite ingresar o registrarse"""
+    if request.method == 'POST':
+        username = request.POST.get('username', '').strip()
+        action = request.POST.get('action', 'login')  # 'login' o 'register'
+        
+        if not username or len(username) < 2:
+            return render(request, 'login.html', {
+                'error': 'El nombre debe tener al menos 2 caracteres'
+            })
+        
+        if action == 'register':
+            # Crear nuevo usuario
+            if UserProfile.objects.filter(username=username).exists():
+                return render(request, 'login.html', {
+                    'error': 'Ese nombre ya está en uso. Intenta con otro o inicia sesión.'
+                })
+            
+            # Crear perfil
+            UserProfile.objects.create(
+                username=username,
+                session_key=request.session.session_key
+            )
+            
+            # Guardar en sesión
+            request.session['username'] = username
+            
+            return redirect('desafios')
+        
+        else:  # action == 'login'
+            # Iniciar sesión con usuario existente
+            try:
+                profile = UserProfile.objects.get(username=username)
+                
+                # Guardar en sesión
+                request.session['username'] = username
+                
+                return redirect('desafios')
+                
+            except UserProfile.DoesNotExist:
+                return render(request, 'login.html', {
+                    'error': 'Usuario no encontrado. ¿Quieres registrarte?',
+                    'suggested_username': username
+                })
+    
+    # GET request
+    # Si ya tiene sesión activa, redirigir al dashboard
+    if request.session.get('username'):
+        return redirect('desafios')
+    
+    return render(request, 'login.html')
+
+
+def logout_view(request):
+    """Vista de logout - cierra la sesión actual"""
+    # Limpiar la sesión
+    if 'username' in request.session:
+        del request.session['username']
+    
+    if 'chat_session_id' in request.session:
+        del request.session['chat_session_id']
+    
+    # Limpiar toda la sesión
+    request.session.flush()
+    
+    return redirect('login')

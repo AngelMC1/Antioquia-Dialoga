@@ -1,77 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Desafíos | Antioquia Dialoga{% endblock %}
+{% block title %}Dashboard | Antioquia Dialoga{% endblock %}
 {% block content %}
-
-<!-- Modal para pedir nombre (solo si no tiene username) -->
-{% if needs_username %}
-<div id="usernameModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-  <div class="bg-white rounded-2xl max-w-md w-full p-6">
-    <h3 class="text-xl font-semibold mb-3">🌿 Bienvenido a Antioquia Dialoga</h3>
-    <p class="text-slate-600 mb-4">Para comenzar tu viaje hacia la paz, cuéntanos cómo te llamas:</p>
-    
-    <form id="usernameForm">
-      <input 
-        id="usernameInput" 
-        type="text" 
-        class="w-full border rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-emerald-400" 
-        placeholder="Tu nombre o nickname"
-        maxlength="50"
-        required
-        autofocus
-      />
-      <p class="text-xs text-slate-500 mb-4">Este nombre te identificará en el ranking y tus logros</p>
-      <button 
-        type="submit" 
-        class="w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
-      >
-        Comenzar mi viaje 🌿
-      </button>
-    </form>
-    
-    <div id="usernameError" class="hidden mt-3 p-2 rounded bg-red-50 text-red-600 text-sm"></div>
-  </div>
-</div>
-
-<script>
-  document.getElementById('usernameForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const username = document.getElementById('usernameInput').value.trim();
-    const errorDiv = document.getElementById('usernameError');
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    
-    // Deshabilitar botón mientras procesa
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Creando perfil...';
-    
-    try {
-      const response = await fetch('/set-username/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username })
-      });
-      
-      const data = await response.json();
-      
-      if (data.success) {
-        window.location.reload();
-      } else {
-        errorDiv.textContent = data.error;
-        errorDiv.classList.remove('hidden');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Comenzar mi viaje 🌿';
-      }
-    } catch (error) {
-      errorDiv.textContent = 'Error al registrar nombre. Intenta de nuevo.';
-      errorDiv.classList.remove('hidden');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Comenzar mi viaje 🌿';
-    }
-  });
-</script>
-{% endif %}
-
-{% if profile %}
 <!-- Encabezado con nombre del usuario -->
 <div class="mb-5">
   <h2 class="text-2xl font-semibold">¡Hola, {{ profile.username }}! 👋</h2>
@@ -260,11 +189,5 @@
   </div>
 </div>
 
-{% else %}
-<!-- Si por alguna razón no hay perfil ni modal, mostrar mensaje -->
-<div class="text-center py-12">
-  <p class="text-slate-600">Cargando tu perfil...</p>
-</div>
-{% endif %}
 
 {% endblock %}
