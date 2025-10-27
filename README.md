@@ -75,7 +75,7 @@ python manage.py runserver
 
 2. **Leer Historias** (`/historias/`)
    - Explora historias sobre paz
-   - (Próximamente: puntos por lectura completa)
+   - anas **+30 puntos** por cada mensaje
 
 3. **Completar Desafíos** (`/`)
    - (Próximamente: sistema de desafíos diarios)
@@ -136,26 +136,6 @@ SECRET_KEY=tu_secret_key_de_django
 
 > **Obtener API Key**: https://ai.google.dev/
 
-## 📚 Documentación Adicional
-
-- [SISTEMA_GAMIFICACION.md](SISTEMA_GAMIFICACION.md) - Detalles del sistema de puntos y logros
-
-## 🤝 Contribuir
-
-Este es un proyecto educativo sobre construcción de paz. Las contribuciones son bienvenidas:
-
-1. Fork el proyecto
-2. Crea una rama (`git checkout -b feature/mejora`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva feature'`)
-4. Push a la rama (`git push origin feature/mejora`)
-5. Abre un Pull Request
-
-## 🐛 Reportar Problemas
-
-Si encuentras un bug o tienes una sugerencia:
-- Abre un **Issue** en GitHub
-- Describe el problema con detalles
-- Incluye capturas de pantalla si es posible
 
 ## 📝 Licencia
 
@@ -166,5 +146,3 @@ Este proyecto es de código abierto para fines educativos.
 Desarrollado para promover la cultura de paz en Antioquia, Colombia 🇨🇴
 
 ---
-
-**¿Necesitas ayuda?** Revisa [SISTEMA_GAMIFICACION.md](SISTEMA_GAMIFICACION.md) para instrucciones detalladas.
