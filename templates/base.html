@@ -11,10 +11,10 @@
 <body class="bg-slate-50 text-slate-800">
   <header class="border-b bg-white shadow-sm">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-2">
+      <a href="{% url 'desafios' %}" class="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
         <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">🌿</span>
         <h1 class="text-xl font-semibold">Antioquia Dialoga</h1>
-      </div>
+      </a>
       
       <nav class="flex items-center gap-2">
         <a href="{% url 'chat' %}" class="px-3 py-2 rounded-lg hover:bg-emerald-50 {% if request.path == '/chat/' %}bg-emerald-100{% endif %}">Chat</a>
