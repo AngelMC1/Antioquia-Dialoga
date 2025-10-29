@@ -149,3 +149,30 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+# Configuración de seguridad para Railway
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-a570a.up.railway.app',
+    'https://*.railway.app',
+    'https://*.up.railway.app',
+]
+
+
+# ALLOWED_HOSTS para Railway
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'web-production-a570a.up.railway.app',
+    '.railway.app',
+    '.up.railway.app',
+]
+
+
+# Configuración de seguridad (solo en producción)
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
