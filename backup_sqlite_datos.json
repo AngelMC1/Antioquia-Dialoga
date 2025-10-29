@@ -1,0 +1,989 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$nYB63zxHXisEmCDQgL6EqJ$YRWliaDrEqR/OXi9Ee91XEYEoSOyfUWbb4yo0yN7/Ug=",
+    "last_login": "2025-10-29T16:15:39.717Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-04T21:58:57.237Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "79ey0typv2kg88gmehv0dckptarjf1wr",
+  "fields": {
+    "session_data": ".eJxVjsEOgjAQRP-lZyFLy263Hr37DWTbroIaSCicjP-uRA56nTczeU_Tybr03Vp07oZsjqYxh98sSrrruIF8k_E61Wkal3mI9Vapd1rq85T1cdq7fwe9lP6zdg05acBGZKcuWMGsIfKFA2EL1JJHFz0zIGr2CYE9EYMNLVJAt1mlXpauaCnDNH5dxaLlBK5CAKxaolBFxlRl8NJQjErqzesNhItF4A:1v5Abj:WfnFlg8GTDlCtpF9EDaXBK_65gySNM9Gl3pUO078WtE",
+    "expire_date": "2025-10-18T22:20:03.204Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "k9h0pdfhyp0wz4j22niru8f1c48xmetv",
+  "fields": {
+    "session_data": "eyJ1c2VybmFtZSI6Ik5pY29sYXNSIiwiY2hhdF9zZXNzaW9uX2lkIjoiMzAyMGRiZjItM2RiOC00YTk0LTk3ZDgtNGY0YmY4ODJmZDFiIn0:1vDCtx:Ts3qA1xuthJzPXUIYDUmk77N62gycb59IM66JcVMRd4",
+    "expire_date": "2025-11-10T02:24:05.056Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "rzx6p6kmu14bcdh1fpgu75amjq4sndg8",
+  "fields": {
+    "session_data": "eyJ1c2VybmFtZSI6IlNhbXVlbCJ9:1vCkij:OY_dAYJ-8Spr2UbFp4NQy2cMoaRdN2ZxBu0gJoisjIw",
+    "expire_date": "2025-11-08T20:18:37.491Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xpms0ew162csiff7guwfoidvfrodcag5",
+  "fields": {
+    "session_data": ".eJxVjjsOwjAQRO_imkRe409MSQ8FF4jW6zUJH1vCoULcnUSkSTvvzWg-4l35lfHJ4iDOI5UH1ovYCRpw6ivXOpbcj3GG1kUVpJINhy412hrXBJS-cRq6FEEnxXYu9viehn4Z_ddgmwWkO-cFxBvma2mp5Ok1hnZR2pXW9lQiP46ruxkYsA7LG6MjaSD23kVtg98HA1pKcA6JEgA44L1n1gkV-2Q7sIYM0CwrVCi-P9C8T2w:1vE8pn:uH-IEarfdGWWu7HacD80IVyrTtNAYRd5aUxkPPMJRWs",
+    "expire_date": "2025-11-12T16:15:39.717Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yurinchxylmklnfhx4fsme8pkkuycc94",
+  "fields": {
+    "session_data": "eyJ1c2VybmFtZSI6IklzYWJlbGxhMyIsImNoYXRfc2Vzc2lvbl9pZCI6IjQxNGUxZjFlLThhYmYtNDVlMy04YzgxLTIzMDk2MTQ4NTdkZCJ9:1vD2Gb:HYjNXYTu5kBaO5QugvXBV7wqGw-_eLeT4apRSa0qdmw",
+    "expire_date": "2025-11-09T15:02:45.821Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 3,
+  "fields": {
+    "session_id": "f8772f15-e30f-4d1e-a222-c9f3e949946a",
+    "created_at": "2025-10-04T22:01:04.451Z",
+    "updated_at": "2025-10-04T22:01:04.451Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 4,
+  "fields": {
+    "session_id": "a2528c03-5005-4669-b85c-d07a16bbe6e7",
+    "created_at": "2025-10-04T22:20:03.235Z",
+    "updated_at": "2025-10-04T22:20:03.235Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 5,
+  "fields": {
+    "session_id": "74a98d67-b61f-490a-9c33-373c7f48591b",
+    "created_at": "2025-10-25T17:43:54.022Z",
+    "updated_at": "2025-10-25T17:43:54.022Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 6,
+  "fields": {
+    "session_id": "3a56dc90-de21-473b-a914-8b2f045d3472",
+    "created_at": "2025-10-25T19:30:52.168Z",
+    "updated_at": "2025-10-25T19:30:52.168Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 7,
+  "fields": {
+    "session_id": "2b6aecef-ee79-4ddf-9e4a-07d675b34328",
+    "created_at": "2025-10-25T19:54:34.002Z",
+    "updated_at": "2025-10-25T19:54:34.002Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 8,
+  "fields": {
+    "session_id": "414e1f1e-8abf-45e3-8c81-2309614857dd",
+    "created_at": "2025-10-26T15:02:45.808Z",
+    "updated_at": "2025-10-26T15:02:45.808Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 9,
+  "fields": {
+    "session_id": "817d1bc0-228f-428b-8041-50c5a9cfda1c",
+    "created_at": "2025-10-27T02:15:04.390Z",
+    "updated_at": "2025-10-27T02:15:04.390Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 10,
+  "fields": {
+    "session_id": "3020dbf2-3db8-4a94-97d8-4f4bf882fd1b",
+    "created_at": "2025-10-27T02:24:05.051Z",
+    "updated_at": "2025-10-27T02:24:05.051Z"
+  }
+},
+{
+  "model": "core.conversation",
+  "pk": 11,
+  "fields": {
+    "session_id": "67d2b020-eb8f-4657-ba09-7418fd14f2e6",
+    "created_at": "2025-10-29T16:15:13.592Z",
+    "updated_at": "2025-10-29T16:15:13.592Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 5,
+  "fields": {
+    "conversation": 3,
+    "role": "user",
+    "content": "hola",
+    "timestamp": "2025-10-04T22:01:09.911Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 6,
+  "fields": {
+    "conversation": 3,
+    "role": "bot",
+    "content": "¡Hola! 👋 Soy PazBot, tu asistente virtual para construir paz en Antioquia. 🌿💚\n\n¿Cómo te puedo ayudar hoy? ¿Te interesa hablar sobre reconciliación, memoria histórica, o quizás tienes ideas para promover la paz en tu comunidad o colegio? ✨ ¡Estoy aquí para conversar y buscar soluciones juntos!\n",
+    "timestamp": "2025-10-04T22:01:12.315Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 7,
+  "fields": {
+    "conversation": 3,
+    "role": "user",
+    "content": "Hola podríamos hablar sobre la memoria histórica y la guerra que sucedió en Antioquia",
+    "timestamp": "2025-10-04T22:01:47.955Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 8,
+  "fields": {
+    "conversation": 3,
+    "role": "bot",
+    "content": "¡Claro que sí! La memoria histórica es fundamental para sanar heridas y construir un futuro en paz en Antioquia. 💚\n\n¿Qué te gustaría saber o explorar sobre este tema? Podemos hablar de:\n\n*   **El impacto del conflicto en diferentes regiones de Antioquia:** ¿Te interesa conocer más sobre alguna zona en particular, como el Oriente, Urabá, o el Bajo Cauca?\n*   **Las víctimas y sus historias:** Podemos explorar cómo honrar la memoria de quienes sufrieron y cómo apoyar sus procesos de reparación.\n*   **Iniciativas de memoria:** Hay muchas organizaciones y colectivos trabajando en Antioquia para preservar la memoria histórica. ¡Puedo contarte sobre algunas de ellas!\n*   **El papel de la educación:** ¿Cómo podemos enseñar a las nuevas generaciones sobre el conflicto y la importancia de la paz?\n*   **Retos y desafíos:** La memoria histórica a veces genera debates y tensiones. Podemos hablar sobre cómo abordarlos de manera constructiva.\n\n¿Por dónde te gustaría empezar? ✨\n",
+    "timestamp": "2025-10-04T22:01:52.144Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 9,
+  "fields": {
+    "conversation": 3,
+    "role": "user",
+    "content": "Quiero hablar sobre Víctimas y memoria en Antioquia.",
+    "timestamp": "2025-10-04T22:02:15.837Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 10,
+  "fields": {
+    "conversation": 3,
+    "role": "bot",
+    "content": "¡Perfecto! Hablemos sobre víctimas y memoria en Antioquia. Es un tema central para la construcción de paz en nuestra región. ✨\n\nPara enfocar la conversación, ¿qué te gustaría saber o explorar específicamente sobre este tema? Algunas opciones podrían ser:\n\n1.  **El papel de las víctimas en la construcción de memoria histórica:** ¿Cómo están liderando este proceso y qué desafíos enfrentan?\n2.  **Iniciativas de memoria lideradas por víctimas en Antioquia:** ¿Conoces alguna? ¿Te gustaría que te contara sobre algunas en particular? (Por ejemplo, en el Oriente Antioqueño, el Urabá, Medellín...)\n3.  **El impacto de la memoria histórica en la reparación y reconciliación:** ¿Cómo ayuda a sanar heridas y construir confianza?\n4.  **Los retos de la memoria histórica en un contexto de polarización:** ¿Cómo podemos asegurar que todas las voces sean escuchadas y respetadas?\n5.  **¿Cómo podemos apoyar a las víctimas y sus iniciativas de memoria desde nuestros espacios?**\n\nMientras tanto, te comparto que en Antioquia, las víctimas han sido protagonistas en la construcción de memoria histórica. A pesar del dolor y las dificultades, han levantado su voz para contar sus historias, exigir verdad y justicia, y proponer caminos de reconciliación. 💚\n\nUn ejemplo inspirador son las **\"Casas de la Memoria\"** que han surgido en diferentes municipios, donde las víctimas se reúnen para recordar, sanar y construir un futuro en paz. También hay muchos **colectivos artísticos** que utilizan el arte como herramienta para visibilizar las experiencias de las víctimas y promover la reflexión.\n\n¡Espero tus preguntas o comentarios para seguir profundizando en este tema! 😊\n",
+    "timestamp": "2025-10-04T22:02:23.783Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 11,
+  "fields": {
+    "conversation": 4,
+    "role": "user",
+    "content": "Quiero hablar sobre Víctimas y memoria en Antioquia.",
+    "timestamp": "2025-10-04T22:49:58.355Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 12,
+  "fields": {
+    "conversation": 4,
+    "role": "bot",
+    "content": "¡Claro que sí! Hablemos sobre víctimas y memoria en Antioquia. Es un tema central para la construcción de paz en nuestra región 🌿.\n\nPara empezar, ¿qué te gustaría saber o explorar específicamente sobre este tema? Algunas opciones podrían ser:\n\n*   **El papel de la memoria histórica** en la sanación y la no repetición.\n*   **Los derechos de las víctimas** en Antioquia y cómo acceder a ellos.\n*   **Iniciativas de memoria** lideradas por comunidades y organizaciones.\n*   **Cómo podemos involucrarnos** como ciudadanos en el apoyo a las víctimas y la construcción de memoria.\n\nO si tienes otra pregunta o inquietud, ¡adelante! Estoy aquí para conversar y compartir información útil. ✨\n",
+    "timestamp": "2025-10-04T22:50:01.574Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 13,
+  "fields": {
+    "conversation": 5,
+    "role": "user",
+    "content": "hola",
+    "timestamp": "2025-10-25T19:05:33.827Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 14,
+  "fields": {
+    "conversation": 5,
+    "role": "bot",
+    "content": "¡Hola! 👋 Soy PazBot, tu asistente virtual para la construcción de paz en Antioquia. 🌿💚✨ \n\n¿Cómo te puedo ayudar hoy? ¿Te interesa hablar sobre reconciliación, derechos de las víctimas, o quizás cómo construir territorios de paz en tu comunidad? 😊\n",
+    "timestamp": "2025-10-25T19:05:36.774Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 15,
+  "fields": {
+    "conversation": 5,
+    "role": "user",
+    "content": "Hola",
+    "timestamp": "2025-10-25T19:29:57.494Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 16,
+  "fields": {
+    "conversation": 5,
+    "role": "bot",
+    "content": "¡Hola de nuevo! 😊 ¿Cómo puedo ayudarte hoy? ¿Tienes alguna pregunta o tema en mente sobre construcción de paz, reconciliación o convivencia en Antioquia? ✨\n",
+    "timestamp": "2025-10-25T19:30:00.919Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 17,
+  "fields": {
+    "conversation": 6,
+    "role": "user",
+    "content": "Quiero hablar sobre Comunicación no violenta en Antioquia.",
+    "timestamp": "2025-10-25T19:43:53.681Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 18,
+  "fields": {
+    "conversation": 6,
+    "role": "bot",
+    "content": "¡Excelente! La Comunicación No Violenta (CNV) es una herramienta poderosa para construir paz y reconciliación en Antioquia 🌿. Me alegra que quieras explorar este tema.\n\nPara empezar, ¿qué te interesa específicamente de la CNV en el contexto antioqueño? ¿Te gustaría saber cómo aplicarla en tu comunidad, en tu colegio, o tal vez entender mejor sus principios básicos?\n\nMientras tanto, te comparto algunas ideas generales sobre cómo la CNV puede ser útil en nuestra región:\n\n*   **Sanar heridas:** En Antioquia, muchas personas han sido afectadas por el conflicto. La CNV nos ayuda a expresar nuestro dolor y necesidades de manera que otros puedan escucharnos sin ponerse a la defensiva.\n*   **Construir puentes:** La CNV fomenta la empatía y el entendimiento mutuo, lo cual es crucial para superar divisiones y construir relaciones de confianza entre personas con diferentes perspectivas e historias.\n*   **Resolver conflictos:** La CNV nos da herramientas para abordar desacuerdos de manera pacífica y encontrar soluciones que satisfagan las necesidades de todas las partes involucradas.\n\n**Ejemplo práctico:**\n\nImagina que en tu barrio hay tensión entre personas que apoyan diferentes ideas políticas. En lugar de atacar las opiniones del otro, podrías usar la CNV para expresar tus sentimientos y necesidades:\n\n*   **Observación:** \"He notado que últimamente hay discusiones muy acaloradas en el parque sobre política.\"\n*   **Sentimiento:** \"Me siento preocupado porque veo que esto está generando divisiones en nuestra comunidad.\"\n*   **Necesidad:** \"Necesito sentir que podemos dialogar respetuosamente a pesar de nuestras diferencias.\"\n*   **Petición:** \"¿Estarían dispuestos a participar en un taller de comunicación no violenta para aprender a escucharnos mejor?\"\n\n¿Qué te parece? ¿Te gustaría que profundicemos en algún aspecto en particular de la CNV? ¡Estoy aquí para ayudarte! 💚✨\n",
+    "timestamp": "2025-10-25T19:44:00.198Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 19,
+  "fields": {
+    "conversation": 9,
+    "role": "user",
+    "content": "hola",
+    "timestamp": "2025-10-27T02:15:06.819Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 20,
+  "fields": {
+    "conversation": 9,
+    "role": "bot",
+    "content": "¡Hola! 👋 Soy PazBot, tu asistente virtual para construir paz, reconciliación y convivencia en Antioquia. 🌿💚✨\n\n¿En qué puedo ayudarte hoy? ¿Te interesa hablar sobre reconciliación comunitaria, memoria histórica, participación juvenil o algún otro tema relacionado con la construcción de paz en nuestra región? 😊\n",
+    "timestamp": "2025-10-27T02:15:07.999Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 21,
+  "fields": {
+    "conversation": 10,
+    "role": "user",
+    "content": "Quiero hablar sobre Reconciliación en Antioquia.",
+    "timestamp": "2025-10-27T02:24:14.084Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 22,
+  "fields": {
+    "conversation": 10,
+    "role": "bot",
+    "content": "¡Qué bueno que quieres hablar de reconciliación en Antioquia! 🌿 Es un tema fundamental para sanar heridas y construir un futuro mejor para todos. 😊\n\nPara empezar, me gustaría saber:\n\n*   ¿Qué te interesa particularmente de la reconciliación? ¿Hay alguna situación específica que te preocupe o te motive a actuar?\n*   ¿Te gustaría enfocar la conversación en algún grupo o territorio en particular de Antioquia? (jóvenes, víctimas, escuelas, etc.)\n*   ¿Qué entiendes por reconciliación? ¿Cómo te imaginas una Antioquia reconciliada?\n\nMientras tanto, te comparto algunas ideas clave sobre la reconciliación en nuestro contexto:\n\n*   **La reconciliación no es olvidar el pasado, sino construir un futuro juntos.** Implica reconocer el daño causado, pedir perdón y reparar a las víctimas, pero también encontrar puntos en común y trabajar por el bien común.\n*   **La reconciliación es un proceso, no un evento.** Requiere tiempo, paciencia y compromiso de todos los actores de la sociedad.\n*   **La reconciliación empieza por uno mismo.** Implica reflexionar sobre nuestros propios prejuicios y estereotipos, y estar dispuestos a escuchar y comprender a los demás.\n\n¡Espero tus comentarios para seguir conversando! 💚\n",
+    "timestamp": "2025-10-27T02:24:17.299Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 23,
+  "fields": {
+    "conversation": 10,
+    "role": "user",
+    "content": "Hola hola hola escribe hola hola hola Simba",
+    "timestamp": "2025-10-27T02:24:43.218Z"
+  }
+},
+{
+  "model": "core.message",
+  "pk": 24,
+  "fields": {
+    "conversation": 10,
+    "role": "bot",
+    "content": "¡Hola! ¡Hola! ¡Hola! 🦁 ¡Hola! ¡Hola! ¡Hola! Simba 🐾\n\n¿En qué te puedo ayudar hoy? 😊\n",
+    "timestamp": "2025-10-27T02:24:46.501Z"
+  }
+},
+{
+  "model": "core.userprofile",
+  "pk": 1,
+  "fields": {
+    "username": "NicolasR",
+    "session_key": "nj44h3uta1xvnllzzpr1wmtwgfp9y697",
+    "created_at": "2025-10-25T19:29:33.227Z",
+    "level": 1,
+    "total_points": 120,
+    "daily_points": 120,
+    "streak_days": 1,
+    "last_activity": "2025-10-27",
+    "conversations_count": 0,
+    "messages_sent": 3,
+    "stories_read": 3,
+    "quizzes_completed": 0
+  }
+},
+{
+  "model": "core.userprofile",
+  "pk": 2,
+  "fields": {
+    "username": "Samuel",
+    "session_key": null,
+    "created_at": "2025-10-25T20:18:37.476Z",
+    "level": 1,
+    "total_points": 60,
+    "daily_points": 60,
+    "streak_days": 0,
+    "last_activity": "2025-10-25",
+    "conversations_count": 0,
+    "messages_sent": 0,
+    "stories_read": 2,
+    "quizzes_completed": 0
+  }
+},
+{
+  "model": "core.userprofile",
+  "pk": 3,
+  "fields": {
+    "username": "Isabella3",
+    "session_key": null,
+    "created_at": "2025-10-26T15:01:47.610Z",
+    "level": 1,
+    "total_points": 33,
+    "daily_points": 33,
+    "streak_days": 0,
+    "last_activity": "2025-10-26",
+    "conversations_count": 0,
+    "messages_sent": 0,
+    "stories_read": 0,
+    "quizzes_completed": 1
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 1,
+  "fields": {
+    "user_profile": 1,
+    "activity_type": "story",
+    "points_earned": 30,
+    "timestamp": "2025-10-25T19:43:20.047Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 2,
+  "fields": {
+    "user_profile": 1,
+    "activity_type": "story",
+    "points_earned": 30,
+    "timestamp": "2025-10-25T19:43:25.374Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 3,
+  "fields": {
+    "user_profile": 1,
+    "activity_type": "story",
+    "points_earned": 30,
+    "timestamp": "2025-10-25T19:43:30.768Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 4,
+  "fields": {
+    "user_profile": 1,
+    "activity_type": "message",
+    "points_earned": 10,
+    "timestamp": "2025-10-25T19:44:00.216Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 5,
+  "fields": {
+    "user_profile": 2,
+    "activity_type": "story",
+    "points_earned": 30,
+    "timestamp": "2025-10-25T20:18:59.842Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 6,
+  "fields": {
+    "user_profile": 2,
+    "activity_type": "story",
+    "points_earned": 30,
+    "timestamp": "2025-10-25T20:19:04.191Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 7,
+  "fields": {
+    "user_profile": 3,
+    "activity_type": "quiz",
+    "points_earned": 33,
+    "timestamp": "2025-10-26T15:02:20.985Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 8,
+  "fields": {
+    "user_profile": 1,
+    "activity_type": "message",
+    "points_earned": 10,
+    "timestamp": "2025-10-27T02:24:17.305Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.activity",
+  "pk": 9,
+  "fields": {
+    "user_profile": 1,
+    "activity_type": "message",
+    "points_earned": 10,
+    "timestamp": "2025-10-27T02:24:46.504Z",
+    "description": ""
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 1,
+  "fields": {
+    "code": "first_message",
+    "name": "Primer Conversador",
+    "description": "Enviaste tu primer mensaje a PazBot",
+    "icon": "🌟",
+    "points_required": 0
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 2,
+  "fields": {
+    "code": "mediator",
+    "name": "Mediador en práctica",
+    "description": "Enviaste 20 mensajes conversando sobre paz",
+    "icon": "🧭",
+    "points_required": 200
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 3,
+  "fields": {
+    "code": "storyteller",
+    "name": "Narrador de Paz",
+    "description": "Leíste tu primera historia completa",
+    "icon": "📖",
+    "points_required": 0
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 4,
+  "fields": {
+    "code": "streak_5",
+    "name": "Racha x5",
+    "description": "Mantuviste una racha de 5 días consecutivos",
+    "icon": "🔥",
+    "points_required": 0
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 5,
+  "fields": {
+    "code": "level_5",
+    "name": "Constructor de Paz",
+    "description": "Alcanzaste el nivel 5",
+    "icon": "🏗️",
+    "points_required": 800
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 6,
+  "fields": {
+    "code": "peacemaker",
+    "name": "Pacificador",
+    "description": "Acumulaste 1000 puntos totales",
+    "icon": "🕊️",
+    "points_required": 1000
+  }
+},
+{
+  "model": "core.storyread",
+  "pk": 1,
+  "fields": {
+    "user_profile": 1,
+    "story_id": "parque",
+    "read_at": "2025-10-25T19:43:20.028Z"
+  }
+},
+{
+  "model": "core.storyread",
+  "pk": 2,
+  "fields": {
+    "user_profile": 1,
+    "story_id": "puente",
+    "read_at": "2025-10-25T19:43:25.357Z"
+  }
+},
+{
+  "model": "core.storyread",
+  "pk": 3,
+  "fields": {
+    "user_profile": 1,
+    "story_id": "semillas",
+    "read_at": "2025-10-25T19:43:30.751Z"
+  }
+},
+{
+  "model": "core.storyread",
+  "pk": 4,
+  "fields": {
+    "user_profile": 2,
+    "story_id": "parque",
+    "read_at": "2025-10-25T20:18:59.823Z"
+  }
+},
+{
+  "model": "core.storyread",
+  "pk": 5,
+  "fields": {
+    "user_profile": 2,
+    "story_id": "semillas",
+    "read_at": "2025-10-25T20:19:04.174Z"
+  }
+},
+{
+  "model": "core.quiz",
+  "pk": 1,
+  "fields": {
+    "title": "Fundamentos de Cultura de Paz",
+    "description": "Conceptos básicos sobre cultura de paz, reconciliación y convivencia pacífica.",
+    "category": "Cultura de Paz",
+    "difficulty": "easy",
+    "points_reward": 50,
+    "is_active": true,
+    "created_at": "2025-10-25T19:50:35.103Z"
+  }
+},
+{
+  "model": "core.quiz",
+  "pk": 2,
+  "fields": {
+    "title": "Reconciliación en Colombia",
+    "description": "Conoce sobre el proceso de paz y reconciliación en Colombia, especialmente en Antioquia.",
+    "category": "Historia y Reconciliación",
+    "difficulty": "medium",
+    "points_reward": 60,
+    "is_active": true,
+    "created_at": "2025-10-25T19:50:35.152Z"
+  }
+},
+{
+  "model": "core.quiz",
+  "pk": 3,
+  "fields": {
+    "title": "Resolución Pacífica de Conflictos",
+    "description": "Aprende estrategias prácticas para resolver conflictos en la escuela, familia y comunidad.",
+    "category": "Habilidades para la Paz",
+    "difficulty": "medium",
+    "points_reward": 55,
+    "is_active": true,
+    "created_at": "2025-10-25T19:50:35.201Z"
+  }
+},
+{
+  "model": "core.question",
+  "pk": 1,
+  "fields": {
+    "quiz": 1,
+    "question_text": "¿Qué significa \"cultura de paz\"?",
+    "option_a": "Ausencia total de conflictos",
+    "option_b": "Un conjunto de valores, actitudes y comportamientos que promueven la paz",
+    "option_c": "Solo firmar acuerdos de paz",
+    "option_d": "Evitar hablar de temas difíciles",
+    "correct_answer": "B",
+    "explanation": "La cultura de paz es un conjunto integral de valores, actitudes y comportamientos que buscan prevenir conflictos y construir convivencia pacífica.",
+    "order": 1
+  }
+},
+{
+  "model": "core.question",
+  "pk": 2,
+  "fields": {
+    "quiz": 1,
+    "question_text": "¿Cuál es el primer paso para resolver un conflicto pacíficamente?",
+    "option_a": "Evitar a la otra persona",
+    "option_b": "Imponer tu punto de vista",
+    "option_c": "Escuchar activamente a todas las partes",
+    "option_d": "Buscar culpables",
+    "correct_answer": "C",
+    "explanation": "La escucha activa es fundamental para comprender todas las perspectivas y encontrar soluciones constructivas.",
+    "order": 2
+  }
+},
+{
+  "model": "core.question",
+  "pk": 3,
+  "fields": {
+    "quiz": 1,
+    "question_text": "¿Qué es la comunicación no violenta?",
+    "option_a": "Hablar en voz baja",
+    "option_b": "Una forma de comunicarse expresando necesidades sin atacar a otros",
+    "option_c": "No decir nada cuando hay conflicto",
+    "option_d": "Evitar el contacto visual",
+    "correct_answer": "B",
+    "explanation": "La comunicación no violenta se enfoca en expresar sentimientos y necesidades de forma honesta y empática, sin culpar ni atacar.",
+    "order": 3
+  }
+},
+{
+  "model": "core.question",
+  "pk": 4,
+  "fields": {
+    "quiz": 1,
+    "question_text": "¿Cuál de estos es un derecho de las víctimas del conflicto?",
+    "option_a": "Venganza",
+    "option_b": "Verdad, justicia, reparación y no repetición",
+    "option_c": "Olvidar lo sucedido",
+    "option_d": "Aislamiento social",
+    "correct_answer": "B",
+    "explanation": "Las víctimas tienen derecho a conocer la verdad, acceder a justicia, recibir reparación y garantías de no repetición.",
+    "order": 4
+  }
+},
+{
+  "model": "core.question",
+  "pk": 5,
+  "fields": {
+    "quiz": 1,
+    "question_text": "¿Qué significa ser un \"constructor de paz\"?",
+    "option_a": "Esperar que otros solucionen los conflictos",
+    "option_b": "Tomar acciones concretas para promover la convivencia pacífica",
+    "option_c": "Ser indiferente ante las injusticias",
+    "option_d": "Solo pensar positivamente",
+    "correct_answer": "B",
+    "explanation": "Un constructor de paz es alguien que activamente trabaja por crear condiciones de convivencia pacífica en su entorno.",
+    "order": 5
+  }
+},
+{
+  "model": "core.question",
+  "pk": 6,
+  "fields": {
+    "quiz": 2,
+    "question_text": "¿Qué es el Acuerdo de Paz en Colombia?",
+    "option_a": "Un tratado internacional",
+    "option_b": "Un acuerdo entre el gobierno y las FARC para terminar el conflicto armado",
+    "option_c": "Una ley de comercio",
+    "option_d": "Un acuerdo deportivo",
+    "correct_answer": "B",
+    "explanation": "El Acuerdo de Paz fue firmado en 2016 entre el gobierno colombiano y las FARC para poner fin a más de 50 años de conflicto armado.",
+    "order": 1
+  }
+},
+{
+  "model": "core.question",
+  "pk": 7,
+  "fields": {
+    "quiz": 2,
+    "question_text": "¿Qué significa \"reconciliación\" en el contexto colombiano?",
+    "option_a": "Olvidar el pasado",
+    "option_b": "Castigar a todos los responsables",
+    "option_c": "Construir relaciones de respeto y convivencia entre quienes fueron enemigos",
+    "option_d": "Separar a las comunidades",
+    "correct_answer": "C",
+    "explanation": "La reconciliación implica reconocer el daño, trabajar juntos y construir puentes para una convivencia pacífica.",
+    "order": 2
+  }
+},
+{
+  "model": "core.question",
+  "pk": 8,
+  "fields": {
+    "quiz": 2,
+    "question_text": "Antioquia ha sido especialmente afectada por:",
+    "option_a": "Conflicto armado, desplazamiento y violencia",
+    "option_b": "Terremotos frecuentes",
+    "option_c": "Sequías extremas",
+    "option_d": "Epidemias",
+    "correct_answer": "A",
+    "explanation": "Antioquia ha experimentado décadas de conflicto armado, desplazamiento forzado y diferentes formas de violencia.",
+    "order": 3
+  }
+},
+{
+  "model": "core.question",
+  "pk": 9,
+  "fields": {
+    "quiz": 2,
+    "question_text": "¿Qué es la memoria histórica?",
+    "option_a": "Recordar fechas importantes",
+    "option_b": "El proceso de documentar y recordar lo sucedido para evitar que se repita",
+    "option_c": "Una clase de historia",
+    "option_d": "Un museo",
+    "correct_answer": "B",
+    "explanation": "La memoria histórica preserva las experiencias del conflicto para honrar a las víctimas y prevenir la repetición.",
+    "order": 4
+  }
+},
+{
+  "model": "core.question",
+  "pk": 10,
+  "fields": {
+    "quiz": 2,
+    "question_text": "¿Quiénes pueden ser constructores de paz en sus comunidades?",
+    "option_a": "Solo el gobierno",
+    "option_b": "Solo las organizaciones internacionales",
+    "option_c": "Todos: jóvenes, adultos, líderes comunitarios",
+    "option_d": "Solo los académicos",
+    "correct_answer": "C",
+    "explanation": "La construcción de paz es responsabilidad de todos y cada persona puede contribuir desde su rol y comunidad.",
+    "order": 5
+  }
+},
+{
+  "model": "core.question",
+  "pk": 11,
+  "fields": {
+    "quiz": 3,
+    "question_text": "En un conflicto entre compañeros, ¿qué es lo primero que debes hacer?",
+    "option_a": "Tomar partido por uno de los lados",
+    "option_b": "Ignorar la situación",
+    "option_c": "Mantener la calma y escuchar ambas versiones",
+    "option_d": "Buscar culpables",
+    "correct_answer": "C",
+    "explanation": "Es fundamental mantener la calma y escuchar todas las perspectivas antes de buscar soluciones.",
+    "order": 1
+  }
+},
+{
+  "model": "core.question",
+  "pk": 12,
+  "fields": {
+    "quiz": 3,
+    "question_text": "¿Qué es la mediación?",
+    "option_a": "Imponer una solución",
+    "option_b": "Un proceso donde una tercera persona ayuda a dos partes a encontrar una solución",
+    "option_c": "Castigar a los involucrados",
+    "option_d": "Evitar el conflicto",
+    "correct_answer": "B",
+    "explanation": "La mediación es un proceso voluntario donde un mediador neutral facilita el diálogo entre las partes.",
+    "order": 2
+  }
+},
+{
+  "model": "core.question",
+  "pk": 13,
+  "fields": {
+    "quiz": 3,
+    "question_text": "¿Cuál es una característica del diálogo constructivo?",
+    "option_a": "Interrumpir constantemente",
+    "option_b": "Escuchar para entender, no solo para responder",
+    "option_c": "Hablar más fuerte que el otro",
+    "option_d": "No admitir errores",
+    "correct_answer": "B",
+    "explanation": "El diálogo constructivo requiere escucha activa y genuina, buscando comprender al otro.",
+    "order": 3
+  }
+},
+{
+  "model": "core.question",
+  "pk": 14,
+  "fields": {
+    "quiz": 3,
+    "question_text": "Cuando estás muy enojado en un conflicto, lo mejor es:",
+    "option_a": "Expresar inmediatamente tu enojo de cualquier forma",
+    "option_b": "Tomar un tiempo para calmarte antes de hablar",
+    "option_c": "Ignorar tus emociones",
+    "option_d": "Culpar a otros por tu enojo",
+    "correct_answer": "B",
+    "explanation": "Es importante reconocer las emociones pero esperar a estar más calmado para comunicarse efectivamente.",
+    "order": 4
+  }
+},
+{
+  "model": "core.question",
+  "pk": 15,
+  "fields": {
+    "quiz": 3,
+    "question_text": "¿Qué significa \"ganar-ganar\" en resolución de conflictos?",
+    "option_a": "Que una parte gane todo",
+    "option_b": "Buscar soluciones donde ambas partes se beneficien",
+    "option_c": "Dividir todo exactamente a la mitad",
+    "option_d": "Que nadie gane nada",
+    "correct_answer": "B",
+    "explanation": "Las soluciones ganar-ganar buscan satisfacer las necesidades de ambas partes creativamente.",
+    "order": 5
+  }
+},
+{
+  "model": "core.quizattempt",
+  "pk": 1,
+  "fields": {
+    "user_profile": 3,
+    "quiz": 3,
+    "score": 3,
+    "total_questions": 5,
+    "points_earned": 33,
+    "completed_at": "2025-10-26T15:02:20.966Z",
+    "time_taken": 25
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-10-04T21:59:41.197Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "core",
+      "message"
+    ],
+    "object_id": "1",
+    "object_repr": "user: hola...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-10-04T21:59:48.218Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "core",
+      "message"
+    ],
+    "object_id": "2",
+    "object_repr": "user: hola...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-10-04T21:59:58.768Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "core",
+      "message"
+    ],
+    "object_id": "3",
+    "object_repr": "user: hola...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-10-04T22:00:02.773Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "core",
+      "message"
+    ],
+    "object_id": "4",
+    "object_repr": "user: hola...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-10-04T22:00:10.886Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "core",
+      "conversation"
+    ],
+    "object_id": "2",
+    "object_repr": "Conversación 1c5ad85d... - 03/10/2025 15:15",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-10-04T22:00:17.706Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "core",
+      "conversation"
+    ],
+    "object_id": "1",
+    "object_repr": "Conversación f1911c40... - 03/10/2025 15:12",
+    "action_flag": 3,
+    "change_message": ""
+  }
+}
+]
